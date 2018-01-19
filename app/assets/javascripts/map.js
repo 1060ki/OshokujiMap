@@ -26,9 +26,29 @@ function search() {
     }
     var directionService = new google.maps.DirectionsService();
     directionService.route(request, function(response, status) {
-        directionsDisplay.setDirections(response)
+        searchShop(response);
+        directionsDisplay.setDirections(response);
     });
 }
+
+function searchShop(response) {
+    var request = [];
+    var steps = response.routes[0].legs[0].steps;
+    for(var i in steps) {
+        request.push({latitude: steps[i].start_location.lat(), longitude: steps[i].start_location.lng() });
+    }
+
+    $.ajax({
+        url: "/yelp/index",
+        type: "GET",
+        data: {steps: request}
+    })
+    .done(function(data){
+    })
+    .fail(function(){
+    });
+}
+
 
 window.onload = initMap;
 
