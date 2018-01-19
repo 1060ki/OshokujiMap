@@ -1,24 +1,35 @@
-# README
+# 開発環境
+- Ruby 2.4.2
+- Ruby on Rails 5.1.4
+- SQLite3
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 環境構築
+1. GitからCloneする
 
-Things you may want to cover:
+```
+$ git clone git@github.com:1060ki/OshokujiMap.git
+```
 
-* Ruby version
+もしくは
 
-* System dependencies
+```
+$ git clone https://github.com/1060ki/OshokujiMap.git
+```
 
-* Configuration
+2. bundle installする
 
-* Database creation
+```
+$ bundle install -j4 --path=vendor/bundle
+```
 
-* Database initialization
+3. db:migrateする
 
-* How to run the test suite
+```
+$ bundle exec rake db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+4. yarn addする
 
-* Deployment instructions
-
-* ...
+```
+$ yarn add
+```
