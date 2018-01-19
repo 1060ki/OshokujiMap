@@ -39,8 +39,8 @@ function searchShop(response) {
     }
 
     $.ajax({
-        url: "/yelp/index",
-        type: "GET",
+        url: "/yelp/steps",
+        type: "POST",
         data: {steps: request}
     })
     .done(function(data){
