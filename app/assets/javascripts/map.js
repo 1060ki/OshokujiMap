@@ -20,6 +20,7 @@ function initMap() {
 }
 
 function search() {
+    $('.overlay').css('display', 'flex');
     markers.forEach(function(marker) {
         marker.setMap(null);
     });
@@ -56,9 +57,11 @@ function searchShop(response) {
             var pos = {lat: shop.coordinates.latitude, lng: shop.coordinates.longitude};
             addMarker(pos, shop);
            // info(shop.id);
+           $('.overlay').hide();
         });
     })
     .fail(function(){
+        $('.overlay').hide();        
     });
 }
 
