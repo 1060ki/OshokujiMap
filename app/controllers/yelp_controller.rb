@@ -14,7 +14,6 @@ class YelpController < ApplicationController
   def steps
     client = YelpAPI.new(Rails.application.secrets.yelp_api_key)
     render json: @result = client.search_with_steps(yelp_params[:steps])
-
   end
 
   private
