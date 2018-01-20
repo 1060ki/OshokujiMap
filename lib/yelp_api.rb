@@ -47,6 +47,7 @@ class YelpAPI
     
     res.flatten!
     res.uniq!{|v| v["id"]}
+    res
   end
 
   private
