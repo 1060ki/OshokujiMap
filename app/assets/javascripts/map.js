@@ -53,7 +53,7 @@ function searchShop(response) {
     })
     .done(function(data){
         data.forEach(function(shop) {
-            var pos = {lat: shop.coordinates.latitude, lng: shop.coordinates.longitude}
+            var pos = {lat: shop.coordinates.latitude, lng: shop.coordinates.longitude};
             addMarker(pos, shop);
            // info(shop.id);
         });
@@ -75,7 +75,7 @@ function addMarker(position, shop){
 
     google.maps.event.addListener(marker, 'click', function (event) {
         $infoWindowDOM.find("img").attr("src", shop.image_url);
-        $infoWindowDOM.find(".name a").text(shop.id);
+        $infoWindowDOM.find(".name a").text(shop.name);
         $infoWindowDOM.find(".name a").attr("href", shop.url);
         $infoWindowDOM.find(".address").text(shop.location.display_address);
         $infoWindowDOM.find(".tel").text(shop.display_phone);
@@ -85,7 +85,7 @@ function addMarker(position, shop){
         infowindow.open(marker.getMap(), marker);
       });
 
-    markers.push(marker)
+    markers.push(marker);
     
     // To add the marker to the map, call setMap();
     marker.setMap(map);

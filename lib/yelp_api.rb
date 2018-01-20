@@ -32,7 +32,7 @@ class YelpAPI
 
     res = Parallel.map(steps.keys) do |i|
       step = steps[i.to_s]
-      shops = search(term: "food", latitude: step['latitude'], longitude: step['longitude'], radius: 1000)
+      shops = search(term: "food", latitude: step['latitude'], longitude: step['longitude'], radius: 1000, locale: 'ja_JP')
       shops["businesses"]
     end
     
