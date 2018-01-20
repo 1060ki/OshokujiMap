@@ -61,3 +61,47 @@
 
     }
 }
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    justify-content: center;
+    align-items: center;
+    svg {
+        width: 20%;
+        #fork {
+            animation-name: fork-anime;
+            animation-duration:2s;
+            animation-timing-function:linear;
+            animation-iteration-count:infinite;
+            transform-origin: 50%;
+        }
+
+        #spoon {
+            animation-name: spoon-anime;
+            animation-duration:2s;
+            animation-timing-function:linear;
+            animation-iteration-count:infinite;
+            transform-origin: 50%;
+        }
+    }
+}
+
+@keyframes fork-anime{
+    0% {transform: translateX(0) rotate(0deg);}
+    
+    50%{transform: translateX(-65%) translateY(5%) rotate(-60deg);}
+	100% {transform: translateX(0) rotate(0deg) ;}    
+}
+
+@keyframes spoon-anime{
+    0% {transform: translateX(0) rotate(0deg);}
+    
+    50%{transform: translateX(65%) translateY(5%) rotate(60deg);}
+	100% {transform: translateX(0) rotate(0deg) ;}    
+}
