@@ -12,7 +12,6 @@ class YelpAPI
 
   def search(params)
     params = params.to_hash
-    url = "#{API_HOST}#{SEARCH_PATH}"
 
     uri = URI.parse("#{API_HOST}#{SEARCH_PATH}")
     uri.query = URI.encode_www_form(params)
