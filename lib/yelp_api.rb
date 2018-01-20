@@ -29,15 +29,14 @@ class YelpAPI
 
   def search_with_steps(steps)
     steps = steps.to_hash
-    res = []
-    (steps.size-1).times do |i|
-      start_point = steps[i.to_s]
-      end_point = steps[(i + 1).to_s]
-      s = search(term: "food", latitude: start_point['latitude'], longitude: start_point['longitude'], radius: 1000)
-      e = search(term: "food", latitude: end_point['latitude'], longitude: end_point['longitude'], radius: 1000)
-      res += s["businesses"] + e['businesses']
+
+    res = Parallel.map(steps.keys) do |i|
+      step = steps[i.to_s]
+      shops = search(term: "food", latitude: step['latitude'], longitude: step['longitude'], radius: 1000)
+      shops["businesses"]
     end
+    
+    res.flatten!
     res.uniq!{|v| v["id"]}
   end
-
 end
