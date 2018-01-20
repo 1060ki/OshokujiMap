@@ -2,21 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.top {
+    background-color: rgb(247, 147, 30);
+    height: 50px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.logo {
+    height: 35px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    margin: auto;
+}
+
 #sample {
-    margin: 10px;
+    margin: 15px;
     height: 600px;
 }
 
 .form-group {
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
 .btn {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .title {
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .g-infoWindow {
