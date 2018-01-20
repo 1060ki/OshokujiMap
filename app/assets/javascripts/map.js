@@ -16,7 +16,6 @@ function initMap() {
     });
     directionsDisplay.setMap( map );
     google.maps.event.addListener(map, "click", function() {infowindow.close();});
-    // ----
     
 }
 
