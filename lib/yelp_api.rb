@@ -29,14 +29,46 @@ class YelpAPI
 
   def search_with_steps(steps)
     steps = steps.to_hash
+    new_step = []
+    steps.each do |_, v|
+      # p distance(new_step.last['latitude'], new_step.last['longitude'], v['latitude'], v['longitude']) if new_step.last
+      if new_step.size == 0 || distance(new_step.last['latitude'], new_step.last['longitude'], v['latitude'], v['longitude']) > 4
+        new_step << v 
+      end
+    end
 
-    res = Parallel.map(steps.keys) do |i|
-      step = steps[i.to_s]
-      shops = search(term: "food", latitude: step['latitude'], longitude: step['longitude'], radius: 1000, locale: 'ja_JP')
+    p new_step
+
+    res = Parallel.map(new_step) do |i|
+      step = i
+      shops = search(term: "food", latitude: step['latitude'], longitude: step['longitude'], radius: 4000, limit: 20,locale: 'ja_JP')
       shops["businesses"]
     end
     
     res.flatten!
     res.uniq!{|v| v["id"]}
   end
+
+  private
+  def distance(lat1, lng1, lat2, lng2)
+    x1 = lat1.to_f * Math::PI / 180
+    y1 = lng1.to_f * Math::PI / 180
+    x2 = lat2.to_f * Math::PI / 180
+    y2 = lng2.to_f * Math::PI / 180
+    
+    radius = 6378.137
+    
+    diff_y = (y1 - y2).abs
+    
+    calc1 = Math.cos(x2) * Math.sin(diff_y)
+    calc2 = Math.cos(x1) * Math.sin(x2) - Math.sin(x1) * Math.cos(x2) * Math.cos(diff_y)
+    
+    numerator = Math.sqrt(calc1 ** 2 + calc2 ** 2)
+    
+    denominator = Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.cos(x2) * Math.cos(diff_y)
+    
+    degree = Math.atan2(numerator, denominator)
+    degree * radius
+  end  
+
 end

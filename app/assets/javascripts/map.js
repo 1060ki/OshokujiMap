@@ -33,7 +33,7 @@ function search() {
         travelMode: "DRIVING"
     }
     var directionService = new google.maps.DirectionsService();
-    directionService.route(request, function(response, status) {
+    directionService.route(request, function(response, status) {        
         searchShop(response);
         directionsDisplay.setDirections(response);
     });
@@ -41,9 +41,9 @@ function search() {
 
 function searchShop(response) {
     var request = [];
-    var steps = response.routes[0].legs[0].steps;
+    var steps = response.routes[0].overview_path;
     for(var i in steps) {
-        request.push({latitude: steps[i].start_location.lat(), longitude: steps[i].start_location.lng() });
+        request.push({latitude: steps[i].lat(), longitude: steps[i].lng()});
     }
 
     $.ajax({
