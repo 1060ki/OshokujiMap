@@ -6,3 +6,31 @@
     margin: 0px;
     height: 600px;
 }
+
+
+.g-infoWindow {
+    img {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    .info {
+        margin: 8px;
+        display: inline-block;
+        width: calc(100%-50px);
+        .name {
+            font-size: 1.2em;
+            a {
+                color: black;
+            }
+        }
+        .address {
+            color: #bbb;
+        }
+        .tel {
+            color: #bbb;
+        }
+
+    }
+}
