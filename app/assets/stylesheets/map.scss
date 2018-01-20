@@ -3,10 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #sample {
-    margin: 0px;
+    margin: 10px;
     height: 600px;
 }
 
+.form-group {
+    padding-left: 10px;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+.title {
+    margin-right: 5px;
+}
 
 .g-infoWindow {
     img {
@@ -26,10 +37,10 @@
             }
         }
         .address {
-            color: #bbb;
+            color: rgb(126, 126, 126);
         }
         .tel {
-            color: #bbb;
+            color: rgb(126, 126, 126);
         }
 
     }

@@ -64,9 +64,14 @@ function searchShop(response) {
 }
 
 function addMarker(position, shop){
+    //var image = '/icon.png';
     var marker = new google.maps.Marker({
         position: position,
-        title: shop.id
+        title: shop.id,
+        icon: {
+            url: "/icon.png" ,
+            scaledSize: new google.maps.Size( 50, 50 ) ,
+        }
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
